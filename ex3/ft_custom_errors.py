@@ -16,21 +16,25 @@ class WaterError(GardenError):
 
 
 def test_error_types():
-    print("Testing PlantError...")
     try:
-        raise PlantError("Tomato was dry")
+        raise PlantError("The tomato plant is wilting!")
     except PlantError as e:
         print(f"Caught PlantError: {e}\n")
 
     print("Testing WaterError...")
     try:
-        raise WaterError("Engine broke down")
+        raise WaterError("Not enough water in the tank!")
     except WaterError as e:
         print(f"Caught WaterError: {e}\n")
 
-    print("Testing GardenError...")
+    print("Testing catching all garden errors..")
     try:
-        raise WaterError("Engine broke down")
+        raise PlantError("The tomato plant is wilting!")
+    except GardenError as e:
+        print(f"Caught GardenError: {e}")
+
+    try:
+        raise WaterError("Not enough water in the tank!")
     except GardenError as e:
         print(f"Caught GardenError: {e}\n")
 
@@ -38,4 +42,7 @@ def test_error_types():
 
 
 if __name__ == "__main__":
+    print("=== Custom Garden Errors Demo ===\n")
+    print("Testing PlantError...")
+
     test_error_types()
