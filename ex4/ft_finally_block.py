@@ -10,30 +10,25 @@ def water_plant(plant_name):
     if plant_name == plant_name.capitalize():
         print(f"Watering {plant_name}: [OK]")
     else:
-        raise PlantError(f" Invalid plant name to water: '{plant_name}'")
+        raise PlantError(f"Invalid plant name to water: '{plant_name}'")
 
 
 def test_watering_system():
     print("Testing valid plants...")
     print("Opening watering system")
 
-    vegetable = ["Tomato", "Lettuce", "Carrots"]
-    for i in range(3):
-        try:
+    try:
+        vegetable = ["Tomato", "Lettuce", "Carrots"]
+        for i in range(3):
             water_plant(vegetable[i])
-        except PlantError as e:
-            print(f"Caught GardenError: {e}")
+    finally:
+        print("Closing watering system\n")
 
-    print("Closing watering system\n")
     print("Testing invalid plants...")
     print("Opening watering system")
 
     try:
-        water_plant(vegetable[0])
-    except PlantError as e:
-        print(f"Caught GardenError: {e}")
-
-    try:
+        water_plant("Tomato")
         water_plant("lettuce")
     except PlantError as e:
         print(f"Caught PlantError: {e}")
