@@ -11,14 +11,14 @@ def test_temperature():
     try:
         temp = input_temperature(temp_str)
         print(f"Temperature is now {temp}°C")
-    except Exception as e:
+    except ValueError as e:
         print(f"Caught input_temperature error: {e}")
     temp_str = "abc"
     print(f"Input data is '{temp_str}'")
     try:
         temp = input_temperature(temp_str)
         print(f"Temperature is now {temp}°C")
-    except Exception as e:
+    except ValueError as e:
         print(f"Caught input_temperature error: {e}")
     print("All tests completed - program didn't crash!")
 
